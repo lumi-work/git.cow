@@ -12,8 +12,10 @@ export default async function PrivatePage() {
     redirect("/");
   }
 
+  console.log(data);
+
   return (
-    <div className="text-white flex-col flex">
+    <div className="text-black flex-col flex">
       Hello {data.user.email}
       <Signout />
     </div>
