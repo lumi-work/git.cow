@@ -26,7 +26,7 @@ function Header() {
           <FaDatabase className="text-[32px] text-gray-400" />
         </div>
 
-        <div className="flex items-center gap-2 px-3.5 py-1 rounded-full border border-pink-500">
+        <div className="flex items-center gap-2 px-3.5 py-1 rounded-2xl border border-gray-200/50">
           <h2 className="text-[15px]">Discover the all new Github Cow</h2>
           <p>
             <FaArrowRight />
