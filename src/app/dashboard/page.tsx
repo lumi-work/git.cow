@@ -16,12 +16,12 @@ export default async function PrivatePage() {
 
   return (
     <>
-      <div className="grid grid-cols-5 h-screen gap-4">
+      <div className="grid grid-cols-6 h-screen gap-4">
         <div className="col-span-1 border-r border-gray-200">
           <LeftBar />
         </div>
 
-        <div className="col-span-3">
+        <div className="col-span-4">
           <Main />
         </div>
 

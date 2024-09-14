@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/client";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { PiSignOutBold } from "react-icons/pi";
 
 function Signout() {
   const supabase = createClient();
@@ -20,7 +21,9 @@ function Signout() {
 
   return (
     <div>
-      <button onClick={handleSignOut}>Sign out</button>
+      <button onClick={handleSignOut}>
+        <PiSignOutBold />
+      </button>
     </div>
   );
 }

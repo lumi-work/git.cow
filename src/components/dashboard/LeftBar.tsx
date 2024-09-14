@@ -13,12 +13,13 @@ import logo from "../../../public/logo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/lib/store";
 import { fetchUser } from "@/lib/features/userSlice";
+import Signout from "./Signout";
 
 function LeftBar() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchUser("chefberke"));
+    dispatch(fetchUser());
   }, []);
 
   const state = useSelector((item: any) => item.user);
@@ -30,7 +31,9 @@ function LeftBar() {
           <Image src={logo} width={100} height={100} alt="logo" />
         </div>
         <div className="flex-col items-start mt-8">
-          <div className="text-gray-400 font-medium text-[14px]">MY DASHBOARD</div>
+          <div className="text-gray-400 font-medium text-[14px]">
+            MY DASHBOARD
+          </div>
           <div className="flex items-center gap-2 pt-2 text-[16px] text-gray-600 hover:cursor-pointer">
             <GrAppsRounded /> <p>Overview</p>
           </div>
@@ -53,12 +56,19 @@ function LeftBar() {
       </div>
 
       <div className="text-gray-600 text-lg flex items-end h-full pb-8 w-full">
-        <div className="flex items-center justify-start bg-black rounded-xl py-2 px-4 w-full text-white mr-8 gap-4">
-          <img src={state.userProfile.avatar_url} width={50} height={50} alt="userimage" className="border border-gray-500 rounded-full" />
-          <div className="flex-col items-center">
-            <p>@{state.userProfile.login}</p>
-            <p className="text-gray-400">{state.userProfile.id}</p>
+        <div className="flex items-center justify-start bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded-2xl py-2.5 px-6 w-full text-white mr-8 gap-2 shadow-lg">
+          <img
+            src={state.userProfile.avatar_url}
+            width={50}
+            height={50}
+            alt="userimage"
+            className="border-4 border-gray-500 rounded-full object-cover -ml-3"
+          />
+          <div className="flex flex-col justify-center">
+            <p className="text-md font-semibold">@{state.userProfile.login}</p>
+            <p className="text-gray-400 text-sm">ID: {state.userProfile.id}</p>
           </div>
+          <Signout />
         </div>
       </div>
     </div>
