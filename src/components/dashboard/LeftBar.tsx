@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { GrAppsRounded } from "react-icons/gr";
 import { GrBook } from "react-icons/gr";
@@ -20,22 +18,22 @@ function LeftBar() {
         </div>
         <div className="flex-col items-start mt-8">
           <div className="text-gray-400 font-medium text-[14px]">MY DASHBOARD</div>
-          <div className="flex items-center gap-2 pt-2 text-lg text-gray-600 hover:cursor-pointer">
+          <div className="flex items-center gap-2 pt-2 text-[16px] text-gray-600 hover:cursor-pointer">
             <GrAppsRounded /> <p>Overview</p>
           </div>
-          <div className="flex items-center gap-2 pt-3 text-lg text-gray-600 hover:cursor-pointer">
+          <div className="flex items-center gap-2 pt-3 text-[16px] text-gray-600 hover:cursor-pointer">
             <GrBook /> <p>Repository</p>
           </div>
-          <div className="flex items-center gap-2 pt-3 text-lg text-gray-600 hover:cursor-pointer">
+          <div className="flex items-center gap-2 pt-3 text-[16px] text-gray-600 hover:cursor-pointer">
             <HiOutlineServer /> <p>Projects</p>
           </div>
         </div>
         <div className="flex-col items-start mt-8">
           <div className="text-gray-400 font-medium text-[14px]">CODESPACE</div>
-          <div className="flex items-center gap-2 pt-2 text-lg text-gray-600 hover:cursor-pointer">
+          <div className="flex items-center gap-2 pt-2 text-[16px] text-gray-600 hover:cursor-pointer">
             <TbPresentationAnalytics /> <p>Analyicts</p>
           </div>
-          <div className="flex items-center gap-2 pt-3 text-lg text-gray-600 hover:cursor-pointer">
+          <div className="flex items-center gap-2 pt-3 text-[16px] text-gray-600 hover:cursor-pointer">
             <LuPackageSearch /> <p>Packages</p>
           </div>
         </div>
