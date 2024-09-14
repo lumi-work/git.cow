@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface githubState {
-  value: number;
+export interface githubState<T = any> {
+  user: Array<T>;
 }
 
 const initialState: githubState = {
-  value: 0,
+  user: [],
 };
 
 export const githubSlice = createSlice({
