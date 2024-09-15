@@ -34,18 +34,28 @@ function RepositoryContent() {
         </div>
         <div className="h-full overflow-y-auto scroll-block">
           {state.repository && state.repository.length > 0
-            ? state.repository.map((item: any) => (
-                <div key={item.id} className="bg-gray-100 py-12 mt-4 rounded-lg">
-                  {item.name}
-                  {item.language === null ? <div>Not Found!</div> : <div>{item.language}</div>}
-                  {item.stargazers_count}
-                  {item.updated_at}
-                  {item.default_branch}
-                  {item.forks}
-                  {item.open_issues_count}
-                  {item.watchers_count}
-                </div>
-              ))
+            ? state.repository.map((item: any) => {
+                const formatDate = (dateString: string) => {
+                  const date = new Date(dateString);
+                  const day = String(date.getDate()).padStart(2, "0");
+                  const month = String(date.getMonth() + 1).padStart(2, "0");
+                  const year = date.getFullYear();
+                  return `${day}.${month}.${year}`;
+                };
+
+                return (
+                  <div key={item.id} className="bg-gray-100 py-12 mt-4 rounded-lg">
+                    {item.name}
+                    {item.language === null ? <div>Not Found!</div> : <div>{item.language}</div>}
+                    {item.stargazers_count}
+                    <p>{formatDate(item.updated_at)}</p>
+                    {item.default_branch}
+                    {item.forks}
+                    {item.open_issues_count}
+                    {item.watchers_count}
+                  </div>
+                );
+              })
             : null}
         </div>
       </div>

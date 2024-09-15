@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { GrAppsRounded } from "react-icons/gr";
 import { GrBook } from "react-icons/gr";
@@ -18,17 +18,22 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 function LeftBar() {
   const dispatch = useDispatch<AppDispatch>();
+  const [selected, setSelected] = useState<string>("overview");
 
   useEffect(() => {
     dispatch(fetchUser());
-  }, []);
-
-  const state = useSelector((item: any) => item.user);
+  }, [dispatch]);
 
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  function handleLeftBar(item: any) {
+  useEffect(() => {
+    const page = searchParams.get("page") || "overview";
+    setSelected(page);
+  }, [searchParams]);
+
+  function handleLeftBar(item: string) {
+    setSelected(item);
     const params = new URLSearchParams(searchParams);
     params.set("page", item);
 
@@ -36,30 +41,57 @@ function LeftBar() {
     router.replace(newURL);
   }
 
+  const state = useSelector((item: any) => item.user);
+
   return (
     <div className="flex flex-col items-start ml-8 pt-8 h-screen">
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col w-full">
         <div>
           <Image src={logo} width={100} height={100} alt="logo" />
         </div>
-        <div className="flex-col items-start mt-8">
+        <div className="flex-col items-start mt-8 w-full pr-8">
           <div className="text-gray-400 font-medium text-[14px]">MY DASHBOARD</div>
-          <div onClick={() => handleLeftBar("overview")} className="flex items-center gap-2 pt-2 text-[16px] text-gray-600 hover:cursor-pointer">
+          <div
+            onClick={() => handleLeftBar("overview")}
+            className={`hover:bg-gray-100 rounded-lg w-full flex items-center gap-2 py-1 pl-1 mt-2 text-[16px] text-gray-600 cursor-pointer ${
+              selected === "overview" ? "bg-gray-100" : ""
+            }`}
+          >
             <GrAppsRounded /> <p>Overview</p>
           </div>
-          <div onClick={() => handleLeftBar("repository")} className="flex items-center gap-2 pt-3 text-[16px] text-gray-600 hover:cursor-pointer">
+          <div
+            onClick={() => handleLeftBar("repository")}
+            className={`hover:bg-gray-100 rounded-lg w-full flex items-center gap-2 py-1 pl-1 mt-2 text-[16px] text-gray-600 cursor-pointer ${
+              selected === "repository" ? "bg-gray-100" : ""
+            }`}
+          >
             <GrBook /> <p>Repository</p>
           </div>
-          <div onClick={() => handleLeftBar("projects")} className="flex items-center gap-2 pt-3 text-[16px] text-gray-600 hover:cursor-pointer">
+          <div
+            onClick={() => handleLeftBar("projects")}
+            className={`hover:bg-gray-100 rounded-lg w-full flex items-center gap-2 py-1 pl-1 mt-2 text-[16px] text-gray-600 cursor-pointer ${
+              selected === "projects" ? "bg-gray-100" : ""
+            }`}
+          >
             <HiOutlineServer /> <p>Projects</p>
           </div>
         </div>
-        <div className="flex-col items-start mt-8">
+        <div className="flex-col items-start mt-8 w-full pr-8">
           <div className="text-gray-400 font-medium text-[14px]">CODESPACE</div>
-          <div onClick={() => handleLeftBar("analyicts")} className="flex items-center gap-2 pt-2 text-[16px] text-gray-600 hover:cursor-pointer">
+          <div
+            onClick={() => handleLeftBar("analyicts")}
+            className={`hover:bg-gray-100 rounded-lg w-full flex items-center gap-2 py-1 pl-1 mt-2 text-[16px] text-gray-600 cursor-pointer ${
+              selected === "analyicts" ? "bg-gray-100" : ""
+            }`}
+          >
             <TbPresentationAnalytics /> <p>Analyicts</p>
           </div>
-          <div onClick={() => handleLeftBar("packages")} className="flex items-center gap-2 pt-3 text-[16px] text-gray-600 hover:cursor-pointer">
+          <div
+            onClick={() => handleLeftBar("packages")}
+            className={`hover:bg-gray-100 rounded-lg w-full flex items-center gap-2 py-1 pl-1 mt-2 text-[16px] text-gray-600 cursor-pointer ${
+              selected === "packages" ? "bg-gray-100" : ""
+            }`}
+          >
             <LuPackageSearch /> <p>Packages</p>
           </div>
         </div>
