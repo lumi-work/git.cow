@@ -11,11 +11,14 @@ import repositoryBranchSlice from './features/repositoryBranchSlice'
 import organizationReposSlice from './features/organizationReposSlice'
 import organizationMembersSlice from './features/organizationMembersSlice'
 import organizationIssuesSlice from './features/organizationIssuesSlice'
+import organizationSlice from './features/organizationSlice'
+import userEventsSlice from './features/userEventsSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
        user: userSlice,
+       userevents: userEventsSlice,
        repo: repositorySlice,
        repoPull: repositoryPullSlice,
        repoLanguage: repositoryLanguagesSlice,
@@ -24,6 +27,7 @@ export const makeStore = () => {
        repoContributors: repositoryContributorsSlice,
        repoCommits: repositoryCommitsSlice,
        repoBranch: repositoryBranchSlice,
+       organization: organizationSlice,
        organizationRepo: organizationReposSlice,
        organizationMembers: organizationMembersSlice,
        organizationIssues: organizationIssuesSlice

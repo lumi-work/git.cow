@@ -27,3 +27,12 @@
     transform: translateX(50px) rotate(-5deg);
   }
 }
+
+.scroll-block {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.scroll-block::-webkit-scrollbar {
+  display: none;
+}
