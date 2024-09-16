@@ -7,10 +7,8 @@ import { fetchUser } from "../../lib/features/userSlice";
 import { FaMapMarkerAlt, FaBuilding, FaCodeBranch } from "react-icons/fa";
 import { FiUsers, FiUserCheck } from "react-icons/fi";
 import { GoRepo } from "react-icons/go";
-import { BsPersonPlus } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import GithubCalendar from "@/components/dashboard/GithubCalendar";
-import DonutChart from "@/components/dashboard/DonutChart";
 
 function OverviewContent() {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,7 +22,7 @@ function OverviewContent() {
   console.log(state);
 
   return (
-    <div className="m-8">
+    <div className="m-8 h-[150vh]">
       <h2 className="text-lg font-semibold text-gray-800 flex-1 mb-6">
         Overview
       </h2>
@@ -131,7 +129,6 @@ function OverviewContent() {
       </div>
       <div className="mt-16">
         <h2 className="text-lg font-medium">Graphics</h2>
-        <DonutChart />
       </div>
     </div>
   );
