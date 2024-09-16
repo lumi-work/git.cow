@@ -30,6 +30,10 @@ function OverviewContent() {
       average: 0,
       percentage: 0,
     },
+    hp: {
+      hour: 0,
+      percentage: 0,
+    },
   });
 
   useEffect(() => {
@@ -58,10 +62,13 @@ function OverviewContent() {
             return item.type == "PullRequestEvent";
           })
         : null;
+    const percentageHourspent = (commitsRate?.length + prRate?.length) / 3;
 
     const percentageCommits = (commitsRate?.length / events?.userEvent?.length) * 100;
     const percentageIssues = (issuesRate?.length / events?.userEvent?.length) * 100;
     const percentagePullRequest = (prRate?.length / events?.userEvent?.length) * 100;
+
+    const averageHourSpent = (commitsRate?.length + prRate?.length) * 0.5;
 
     setAverageRate({
       commits: {
@@ -75,6 +82,10 @@ function OverviewContent() {
       pr: {
         average: prRate?.length,
         percentage: percentagePullRequest,
+      },
+      hp: {
+        hour: averageHourSpent,
+        percentage: percentageHourspent,
       },
     });
   }
@@ -124,7 +135,7 @@ function OverviewContent() {
       </div>
 
       <div className="mt-10">
-        <div className="flex items-center justify-start gap-24 w-full border-t border-gray-200 pt-6 h-36">
+        <div className="flex items-center justify-between w-full border-t border-gray-200 pt-6 h-36">
           <div>
             <h2 className="text-lg font-medium">Commits Rate</h2>
             <div className="flex items-center justify-center gap-8 pt-4">
@@ -163,6 +174,20 @@ function OverviewContent() {
               <div className={`${averages.pr.percentage > 30 ? "bg-green-400/40" : "bg-red-400/40"} rounded-lg px-2 py-1.5`}>
                 <h2 className={`${averages.pr.percentage > 30 ? "text-green-600" : "text-red-600"}`}>
                   {averages.pr.percentage > 30 ? <p>+{averages.pr.percentage.toFixed(1)}%</p> : <p>-{averages.pr.percentage.toFixed(1)}%</p>}
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-lg font-medium">Time Spent</h2>
+            <div className="flex items-center justify-center gap-8 pt-4">
+              <div>
+                <p className="text-gray-400 text-sm">Your Average</p>
+                <p className="font-medium text-lg">{averages.hp.hour}/hr</p>
+              </div>
+              <div className={`${averages.hp.percentage < averages.hp.hour ? "bg-green-400/40" : "bg-red-400/40"} rounded-lg px-2 py-1.5`}>
+                <h2 className={`${averages.hp.percentage < averages.hp.hour ? "text-green-600" : "text-red-600"}`}>
+                  {averages.hp.percentage < averages.hp.hour ? <p>+{averages.hp.percentage.toFixed(1)}%</p> : <p>-{averages.hp.percentage.toFixed(1)}%</p>}
                 </h2>
               </div>
             </div>
