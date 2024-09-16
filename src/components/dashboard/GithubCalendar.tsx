@@ -20,9 +20,9 @@ function GithubCalendar() {
   }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between h-36">
       <GitHubCalendar colorScheme="light" username={state.userProfile.login} />
-      <div>123</div>
+      <div className="bg-gray-100 h-full w-full ml-5 rounded-lg">123</div>
     </div>
   );
 }
