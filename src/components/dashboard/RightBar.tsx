@@ -40,7 +40,7 @@ function RightBar() {
           return (
             <div
               key={index}
-              className="mt-6 border-t pt-6 pb-6 shadow-sm hover:shadow-lg transition-shadow duration-300 w-full bg-gray-100 rounded-lg"
+              className="mt-6 pt-6 pb-6 shadow-sm hover:shadow-lg transition-shadow duration-300 w-full bg-gray-100 rounded-lg"
             >
               <div className="flex items-center gap-2 ml-2">
                 <img
