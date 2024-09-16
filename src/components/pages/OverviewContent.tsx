@@ -10,6 +10,7 @@ import { GoRepo } from "react-icons/go";
 import { BsPersonPlus } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import GithubCalendar from "@/components/dashboard/GithubCalendar";
+import DonutChart from "@/components/dashboard/DonutChart";
 
 function OverviewContent() {
   const dispatch = useDispatch<AppDispatch>();
@@ -130,6 +131,7 @@ function OverviewContent() {
       </div>
       <div className="mt-16">
         <h2 className="text-lg font-medium">Graphics</h2>
+        <DonutChart />
       </div>
     </div>
   );
