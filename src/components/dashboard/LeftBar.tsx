@@ -50,7 +50,9 @@ function LeftBar() {
           <Image src={logo} width={100} height={100} alt="logo" />
         </div>
         <div className="flex-col items-start mt-8 w-full pr-8">
-          <div className="text-gray-400 font-medium text-[14px]">MY DASHBOARD</div>
+          <div className="text-gray-400 font-medium text-[14px]">
+            MY DASHBOARD
+          </div>
           <div
             onClick={() => handleLeftBar("overview")}
             className={`hover:bg-gray-100 rounded-lg w-full flex items-center gap-2 py-1 pl-1 mt-2 text-[16px] text-gray-600 cursor-pointer ${
@@ -96,15 +98,22 @@ function LeftBar() {
           </div>
         </div>
       </div>
-
-      <div className="text-gray-600 text-lg flex items-end h-full pb-8 w-full">
-        <div className="flex items-center justify-start bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded-2xl py-2.5 px-6 w-full text-white mr-8 gap-2 shadow-lg">
-          <img src={state.userProfile.avatar_url} width={50} height={50} alt="userimage" className="border-4 border-gray-500 rounded-full object-cover -ml-3" />
-          <div className="flex flex-col justify-center">
-            <p className="text-md font-semibold">@{state.userProfile.login}</p>
-            <p className="text-gray-400 text-sm">ID: {state.userProfile.id}</p>
+      <div className="text-gray-600 text-md flex items-end h-full pb-4 w-full">
+        <div className="flex items-center justify-start bg-gray-100 rounded-lg py-4 px-4 w-full text-gray-700 mr-6 gap-2 shadow-md">
+          <img
+            src={state.userProfile.avatar_url}
+            width={40}
+            height={40}
+            alt="userimage"
+            className="border-2 border-gray-300 rounded-full object-cover -ml-2"
+          />
+          <div className="flex flex-col justify-center flex-grow">
+            <p className="text-lg font-semibold">@{state.userProfile.login}</p>
+            <p className="text-gray-500 text-xs">ID: {state.userProfile.id}</p>
           </div>
-          <Signout />
+          <div className="ml-auto">
+            <Signout />
+          </div>
         </div>
       </div>
     </div>

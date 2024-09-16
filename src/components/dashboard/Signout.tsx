@@ -22,7 +22,7 @@ function Signout() {
   return (
     <div>
       <button onClick={handleSignOut}>
-        <PiSignOutBold />
+        <PiSignOutBold className="flex justify-center items-center text-xl hover:text-black" />
       </button>
     </div>
   );
