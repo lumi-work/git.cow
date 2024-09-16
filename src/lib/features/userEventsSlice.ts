@@ -31,9 +31,7 @@ export const fetchUserEvents = createAsyncThunk('user/usersevents', async () => 
   const req = await fetch(`https://api.github.com/users/${username}/events`);
   const data = await req.json();
   
-
-  const filteredData = data?.filter((item: any) => item.type == "PushEvent") || [];
-  return filteredData;
+  return data;
 
 });
 

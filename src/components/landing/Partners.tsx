@@ -1,17 +1,6 @@
-// "use client";
-
 import React from "react";
 
 function Partners() {
-  // async function fetchUser(username: any) {
-  //   const res = await fetch(`https://api.github.com/users/${username}`);
-  //   const data = await res.json();
-
-  //   console.log(data);
-  // }
-
-  // fetchUser("spadeydev");
-
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <div>

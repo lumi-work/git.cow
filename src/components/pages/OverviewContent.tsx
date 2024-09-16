@@ -1,105 +1,178 @@
-import React, { useEffect } from "react";
-import { AppDispatch } from "@/lib/store";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../../lib/features/userSlice";
+
+import { AppDispatch } from "@/lib/store";
+import GithubCalendar from "@/components/dashboard/GithubCalendar";
+import { fetchUser } from "@/lib/features/userSlice";
+import { fetchUserEvents } from "@/lib/features/userEventsSlice";
 
 // Icons
 import { FaMapMarkerAlt, FaBuilding, FaCodeBranch } from "react-icons/fa";
-import { FiUsers, FiUserCheck } from "react-icons/fi";
-import { GoRepo } from "react-icons/go";
-import { FaGithub } from "react-icons/fa";
-import GithubCalendar from "@/components/dashboard/GithubCalendar";
 
 function OverviewContent() {
   const dispatch = useDispatch<AppDispatch>();
 
+  const state = useSelector((item: any) => item.user);
+  const events = useSelector((item: any) => item.userevents);
+
+  const [averages, setAverageRate] = useState({
+    commits: {
+      average: 0,
+      percentage: 0,
+    },
+    issues: {
+      average: 0,
+      percentage: 0,
+    },
+    pr: {
+      average: 0,
+      percentage: 0,
+    },
+  });
+
   useEffect(() => {
     dispatch(fetchUser());
-  }, [dispatch]);
+    dispatch(fetchUserEvents());
+  }, []);
 
-  const state = useSelector((item: any) => item.user);
+  function calculateAverage() {
+    const commitsRate =
+      events.userEvent && events.userEvent.length > 0
+        ? events.userEvent.filter((item: any) => {
+            return item.type == "PushEvent";
+          })
+        : null;
+
+    const issuesRate =
+      events.userEvent && events.userEvent.length > 0
+        ? events.userEvent.filter((item: any) => {
+            return item.type == "IssuesEvent";
+          })
+        : null;
+
+    const prRate =
+      events.userEvent && events.userEvent.length > 0
+        ? events.userEvent.filter((item: any) => {
+            return item.type == "PullRequestEvent";
+          })
+        : null;
+
+    const percentageCommits = (commitsRate?.length / events?.userEvent?.length) * 100;
+    const percentageIssues = (issuesRate?.length / events?.userEvent?.length) * 100;
+    const percentagePullRequest = (prRate?.length / events?.userEvent?.length) * 100;
+
+    setAverageRate({
+      commits: {
+        average: commitsRate?.length,
+        percentage: percentageCommits,
+      },
+      issues: {
+        average: issuesRate?.length,
+        percentage: percentageIssues,
+      },
+      pr: {
+        average: prRate?.length,
+        percentage: percentagePullRequest,
+      },
+    });
+  }
+
+  useEffect(() => {
+    calculateAverage();
+  }, [events.userEvent, events]);
 
   return (
-    <div className="m-8 h-[150vh]">
+    <div className="m-8">
       <h2 className="text-lg font-semibold text-gray-800 flex-1 mb-6">Overview</h2>
-      <div className="bg-gray-100 w-full h-auto text-gray-800 rounded-lg p-6 shadow-lg space-y-6">
+      <div className="w-full h-auto text-gray-800 rounded-lg p-6 space-y-6">
         <div className="flex justify-between">
-          {/*Avatar Bilgilendirme*/}
           <div className="flex items-center space-x-6">
-            <img src={state.userProfile.avatar_url} width={120} height={120} alt="userimage" className="border-4 border-gray-500 rounded-full object-cover" />
+            <img src={state.userProfile.avatar_url} width={120} height={120} alt="userimage" className="border border-gray-200 rounded-full object-cover" />
             <div>
               <p className="text-2xl font-semibold text-gray-800">@{state.userProfile.login}</p>
               <p className="text-gray-600 text-sm">ID: {state.userProfile.id}</p>
               <p className="text-md text-gray-700">{state.userProfile.bio}</p>
             </div>
           </div>
-
-          {/* Sağ Kısım */}
-          <div className="flex flex-col justify-between items-end space-y-4">
-            <div className="flex space-x-4">
-              <a href={state.userProfile.html_url} className="bg-black text-white font-semibold py-2 px-4 rounded-md flex items-center">
-                <FaGithub className="mr-2" /> Github
-              </a>
-            </div>
-
-            <div className="text-gray-700 text-sm">
-              <p>
-                Total Contributions: <span className="font-bold">300</span>
-              </p>
-              <p>
-                Last Active: <span className="font-bold">3 days ago</span>
-              </p>
-            </div>
-          </div>
         </div>
 
-        {/* Kullanıcı Verileri */}
-        <div className="grid grid-cols-2 gap-6">
-          <div className="flex items-center space-x-2">
-            <FiUsers className="text-pink-500" size={24} />
-            <p className="text-gray-700">
-              <span className="font-bold">{state.userProfile.followers}</span> Followers
-            </p>
-          </div>
-          <div className="flex items-center space-x-2">
-            <FiUserCheck className="text-green-500" size={24} />
-            <p className="text-gray-700">
-              <span className="font-bold">{state.userProfile.following}</span> Following
-            </p>
-          </div>
-          <div className="flex items-center space-x-2">
-            <GoRepo className="text-blue-500" size={24} />
-            <p className="text-gray-700">
-              <span className="font-bold">{state.userProfile.public_repos}</span> Repositories
-            </p>
-          </div>
-          <div className="flex items-center space-x-2">
-            <FaCodeBranch className="text-purple-500" size={24} />
-            <p className="text-gray-700">
-              Website: <span className="font-bold">{state.userProfile.blog || "Not available"}</span>
-            </p>
-          </div>
-        </div>
-
-        {/* Daha Fazla Veri */}
-        <div className="grid grid-cols-2 gap-6">
-          <div className="flex items-center space-x-2">
-            <FaMapMarkerAlt className="text-red-500" size={24} />
-            <p className="text-gray-700">{state.userProfile.location || "Location not specified"}</p>
-          </div>
-          <div className="flex items-center space-x-2">
-            <FaBuilding className="text-yellow-500" size={24} />
-            <p className="text-gray-700">{state.userProfile.company || "Company not specified"}</p>
+        <div className="flex items-center justify-start">
+          <div className="flex-col items-center">
+            <div className="flex items-center gap-5">
+              <div>
+                {state.userProfile.followers} <span className="text-gray-500">Followers</span>
+              </div>
+              <div>
+                {state.userProfile.following} <span className="text-gray-500">Followers</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-start gap-2 pt-4">
+              <FaMapMarkerAlt className="text-gray-700" /> {state.userProfile.location}
+            </div>
+            <div className="flex items-center justify-start gap-2 pt-1">
+              <FaCodeBranch />
+              {state.userProfile.public_repos} Repository
+            </div>
+            <div className="flex items-center justify-start gap-2 pt-1">
+              <FaBuilding />
+              {state.userProfile.company || "No company found."}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-10">
+        <div className="flex items-center justify-start gap-24 w-full border-t border-gray-200 pt-6 h-36">
+          <div>
+            <h2 className="text-lg font-medium">Commits Rate</h2>
+            <div className="flex items-center justify-center gap-8 pt-4">
+              <div>
+                <p className="text-gray-400 text-sm">Your Average</p>
+                <p className="font-medium text-lg">{averages.commits.average}</p>
+              </div>
+              <div className={`${averages.commits.percentage > 30 ? "bg-green-400/40" : "bg-red-400/40"} rounded-lg px-2 py-1.5`}>
+                <h2 className={`${averages.commits.percentage > 30 ? "text-green-600" : "text-red-600"}`}>
+                  {averages.commits.percentage > 30 ? <p>+{averages.commits.percentage.toFixed(1)}%</p> : <p>-{averages.commits.percentage.toFixed(1)}%</p>}
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-lg font-medium">Issues Rate</h2>
+            <div className="flex items-center justify-center gap-8 pt-4">
+              <div>
+                <p className="text-gray-400 text-sm">Your Average</p>
+                <p className="font-medium text-lg">{averages.issues.average}</p>
+              </div>
+              <div className={`${averages.issues.percentage > 30 ? "bg-green-400/40" : "bg-red-400/40"} rounded-lg px-2 py-1.5`}>
+                <h2 className={`${averages.issues.percentage > 30 ? "text-green-600" : "text-red-600"}`}>
+                  {averages.issues.percentage > 30 ? <p>+{averages.issues.percentage.toFixed(1)}%</p> : <p>-{averages.issues.percentage.toFixed(1)}%</p>}
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-lg font-medium">Pull Requests Rate</h2>
+            <div className="flex items-center justify-center gap-8 pt-4">
+              <div>
+                <p className="text-gray-400 text-sm">Your Average</p>
+                <p className="font-medium text-lg">{averages.pr.average}</p>
+              </div>
+              <div className={`${averages.pr.percentage > 30 ? "bg-green-400/40" : "bg-red-400/40"} rounded-lg px-2 py-1.5`}>
+                <h2 className={`${averages.pr.percentage > 30 ? "text-green-600" : "text-red-600"}`}>
+                  {averages.pr.percentage > 30 ? <p>+{averages.pr.percentage.toFixed(1)}%</p> : <p>-{averages.pr.percentage.toFixed(1)}%</p>}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10 border-t pt-6 border-gray-200">
         <h2 className="text-lg font-medium mb-8">Contributions</h2>
         <GithubCalendar />
-      </div>
-      <div className="mt-16">
-        <h2 className="text-lg font-medium">Graphics</h2>
       </div>
     </div>
   );

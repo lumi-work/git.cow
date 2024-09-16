@@ -55,7 +55,7 @@ function RightBar() {
                     </div>
                   ))
                 ) : (
-                  <div className="text-gray-500 text-sm font-light">No commits available.</div>
+                  <div className="text-gray-500 text-sm font-light">{item.type || "No commits available."}</div>
                 )}
               </div>
               <div className="flex items-center justify-between w-full mt-4 px-4">
