@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { TbTimelineEventText } from "react-icons/tb";
 import { LuBookMarked } from "react-icons/lu";
-import { FaGithub } from "react-icons/fa";
+import { VscSourceControl } from "react-icons/vsc";
 
 function RightBar() {
   const dispatch = useDispatch<AppDispatch>();
@@ -61,9 +61,9 @@ function RightBar() {
               <div className="flex items-center justify-between w-full mt-4 px-4">
                 {item.payload.commits && item.payload.commits.length > 0
                   ? item.payload.commits.slice(0, 1).map((commit: any) => (
-                      <div key={commit.sha} className="text-gray-700 text-sm font-light">
-                        <a href={`https://github.com/${item.repo.name}/commit/${commit.sha}`} className="text-red-500">
-                          <FaGithub className="text-lg text-gray-500" />
+                      <div key={commit.sha} className="text-gray-700 text-md font-light flex items-center">
+                        <a href={`https://github.com/${item.repo.name}/commit/${commit.sha}`}>
+                          <VscSourceControl className="text-gray-500" />
                         </a>
                       </div>
                     ))
