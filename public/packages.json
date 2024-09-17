@@ -31,7 +31,7 @@
   },
   {
     "title": "Moment",
-    "usage": "Parse, validate, manipulate, and display dates and times in JavaScript.",
+    "usage": "Parse, validate, manipulate, display dates and times in JavaScript.",
     "downloads": "10M+",
     "link": "https://www.npmjs.com/package/moment"
   },

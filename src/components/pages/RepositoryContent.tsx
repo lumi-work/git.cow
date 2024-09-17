@@ -5,12 +5,11 @@ import { AppDispatch } from "@/lib/store";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoMdRefresh } from "react-icons/io";
-import { CgHashtag } from "react-icons/cg";
+
+import { GrBook } from "react-icons/gr";
+import { FaCodeBranch } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
-import { GoRepoForked } from "react-icons/go";
-import { IoIosGitBranch } from "react-icons/io";
-import { VscIssues } from "react-icons/vsc";
-import { FiEye } from "react-icons/fi";
+import { FaCode } from "react-icons/fa";
 
 function RepositoryContent() {
   const [refresh, setRefresh] = useState(false);
@@ -25,6 +24,8 @@ function RepositoryContent() {
   function handleRefresh() {
     setRefresh(!refresh);
   }
+
+  console.log(state);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -50,67 +51,58 @@ function RepositoryContent() {
           />
         </div>
 
-        <div className="h-full overflow-y-auto scroll-block space-y-10 ">
+        <div className="grid grid-cols-2 mr-8 pb-8 max-md:grid-cols-1 gap-4">
           {state.repository && state.repository.length > 0 ? (
-            state.repository.map((item: any) => (
-              <div
-                key={item.id}
-                className="p-6 rounded-lg shadow-sm bg-gray-100 cursor-pointer"
-              >
-                <h3 className="text-xl font-semibold text-gray-800 mb-5">
-                  {item.name}
-                </h3>
+            state.repository.map((item: any, index: any) => {
+              const updatedAt = new Date(item.updated_at);
+              const formattedDate = `${updatedAt.getDate()}.${
+                updatedAt.getMonth() + 1
+              }.${updatedAt.getFullYear()}`;
 
-                <div className="mt-2 text-sm text-gray-600 grid grid-cols-3 gap-4">
-                  <div className="flex items-center">
-                    <span className="bg-pink-500 text-white text-xs font-medium px-4 py-2 rounded-lg">
-                      <CgHashtag className="inline-block mr-2 text-white font-bold" />
-                      Language: {item.language || "Not Found!"}
-                    </span>
+              return (
+                <div
+                  key={`repo-${index}`}
+                  className="w-full h-48 bg-gray-200/20 mt-4 rounded-xl pl-6 pr-6 pt-6 border border-gray-200"
+                >
+                  <div className="flex items-center w-full justify-between">
+                    <div className="flex items-center gap-2 underline">
+                      <GrBook className="text-gray-700" /> {item.name}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <h2 className="text-gray-700">Last update:</h2>{" "}
+                      <span className="text-gray-600">{formattedDate}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <span className="bg-yellow-500 text-white text-xs font-medium px-4 py-2 rounded-lg">
-                      <FaRegStar className="inline-block mr-2 text-white" />
-                      Stars: {item.stargazers_count}
-                    </span>
+                  <div className="text-gray-400 pt-2 text-sm">
+                    {item.description || "No description."}
                   </div>
-                  <div className="flex items-center">
-                    <span className="bg-green-500 text-white text-xs font-medium px-4 py-2 rounded-lg">
-                      <IoIosGitBranch className="inline-block mr-2 text-white" />
-                      Default Branch: {item.default_branch}
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="bg-blue-500 text-white text-xs font-medium px-4 py-2 rounded-lg">
-                      <GoRepoForked className="inline-block mr-2 text-white" />
-                      Forks: {item.forks}
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="bg-red-500 text-white text-xs font-medium px-4 py-2 rounded-lg">
-                      <VscIssues className="inline-block mr-2 text-white" />
-                      Open Issues: {item.open_issues_count}
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="bg-purple-500 text-white text-xs font-medium px-4 py-2 rounded-lg">
-                      <FiEye className="inline-block mr-2 text-white" />
-                      Watchers: {item.watchers_count}
-                    </span>
+                  <div className="flex items-center justify-between w-full pt-16">
+                    <div className="flex items-center gap-4 text-md">
+                      <div className="flex items-center gap-2">
+                        <FaCodeBranch className="text-blue-500" />
+                        {item.default_branch}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaRegStar className="text-yellow-500" />
+                        {item.stargazers_count}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <FaCode className="text-gray-500" />{" "}
+                      {item.language || "No language."}
+                    </div>
                   </div>
                 </div>
-
-                <p className="text-sm text-gray-500 mt-4 text-right">
-                  <span className="font-medium">Last Updated:</span>{" "}
-                  {formatDate(item.updated_at)}
-                </p>
-              </div>
-            ))
+              );
+            })
           ) : (
-            <p className="text-gray-500 text-center mt-6">
-              No repositories found.
-            </p>
+            <div>No repository found.</div>
           )}
+        </div>
+
+        <div className="pb-8">
+          You have <span className="underline">{state.repository.length}</span>{" "}
+          repository for public.
         </div>
       </div>
     </div>

@@ -15,14 +15,14 @@ export default async function PrivatePage() {
 
   return (
     <>
-      <div className="grid grid-cols-6 h-screen gap-4">
+      <div className="grid grid-cols-6 h-screen gap-4 scroll-block">
         {/* Left Sidebar */}
         <div className="col-span-1 border-r border-gray-200 h-full overflow-hidden">
           <LeftBar />
         </div>
 
         {/* Main Content Area */}
-        <div className="col-span-4 h-full overflow-y-auto">
+        <div className="col-span-4 h-full overflow-y-auto scroll-block">
           <PageRouter />
         </div>
 

@@ -25,11 +25,12 @@ function PackagesContent() {
   return (
     <div className="ml-8 mt-8">
       <h2 className="text-xl font-semibold mb-4">
-        Packages <span className="text-gray-500 text-sm">({packages.length})</span>
+        Packages{" "}
+        <span className="text-gray-500 text-sm">({packages.length})</span>
       </h2>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         {packages && packages.length > 0
-          ? packages.map((pkg, index) => (
+          ? packages.map((pkg: any, index: any) => (
               <div
                 key={index}
                 className="bg-gray-100 cursor-pointer p-6 w-full h-48 flex flex-col justify-between rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"

@@ -12,7 +12,7 @@ import organizationReposSlice from './features/organizationReposSlice'
 import organizationMembersSlice from './features/organizationMembersSlice'
 import organizationIssuesSlice from './features/organizationIssuesSlice'
 import organizationSlice from './features/organizationSlice'
-import userEventsSlice from './features/userEventsSlice'
+import userEventsSlice from "./features/userEventsSlice"
 
 export const makeStore = () => {
   return configureStore({
