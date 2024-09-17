@@ -12,19 +12,19 @@
 
 @keyframes moveSides {
   0% {
-    transform: translateX(0) rotate(-20deg);
+    transform: translateY(0) rotate(-20deg);
   }
   100% {
-    transform: translateX(90px) rotate(-20deg);
+    transform: translateY(90px) rotate(-20deg);
   }
 }
 
 @keyframes moveSides2 {
   0% {
-    transform: translateX(0) rotate(-5deg);
+    transform: translateY(0) rotate(-5deg);
   }
   100% {
-    transform: translateX(50px) rotate(-5deg);
+    transform: translateY(50px) rotate(-5deg);
   }
 }
 

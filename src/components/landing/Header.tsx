@@ -1,54 +1,40 @@
 import React from "react";
-
-import dashboardOverlay from "../../../public/dashboard_overlay.png";
-
-import { FaArrowRight } from "react-icons/fa6";
-import { BsCalendarDateFill } from "react-icons/bs";
-import { IoMdImage } from "react-icons/io";
-import { FaFile } from "react-icons/fa";
-import { FaDatabase } from "react-icons/fa6";
 import Image from "next/image";
+import bug2 from "../../../public/bug2.svg";
+import whale from "../../../public/whale.svg";
+import octopus from "../../../public/octopus.svg";
+import frog from "../../../public/frog.svg";
 
 function Header() {
   return (
-    <div className="flex items-center justify-center text-white h-[95rem]">
-      <div className="flex flex-col items-center justify-center">
-        <div className="bg-[#323138] w-14 h-14 rounded-xl absolute flex items-center justify-center top-1/3 left-48 box">
-          <BsCalendarDateFill className="text-[32px] text-gray-400" />
-        </div>
-        <div className="bg-[#323138] w-14 h-14 rounded-xl absolute flex items-center justify-center top-1/3 right-48 box2">
-          <IoMdImage className="text-[32px] text-gray-400" />
-        </div>
-        <div className="bg-[#323138] w-14 h-14 rounded-xl absolute flex items-center justify-center top-1/2 left-36 box2">
-          <FaFile className="text-[32px] text-gray-400" />
-        </div>
-        <div className="bg-[#323138] w-14 h-14 rounded-xl absolute flex items-center justify-center top-1/2 right-40 box">
-          <FaDatabase className="text-[32px] text-gray-400" />
-        </div>
-
-        <div className="flex items-center gap-2 px-3.5 py-1 rounded-2xl border border-gray-200/50">
-          <h2 className="text-[15px]">Discover the all new Github Cow</h2>
-          <p>
-            <FaArrowRight />
-          </p>
-        </div>
-        <div className="pt-4">
-          <h2 className="text-[60px] font-bold text-center">
-            Your <span className="text-pink-500">GitHub</span>, Organized <br /> and Optimized
-          </h2>
-        </div>
-        <div className="text-center text-gray-400 flex items-center justify-center pt-2">
-          <p className="w-[620px] text-[15px]">
-            Easily monitor and manage your GitHub repositories with a centralized dashboard. Keep track of commits, issues, and pull requests in real-time, all in one place.
-          </p>
-        </div>
-        <div className="flex items-center justify-center gap-5 pt-10">
-          <div className="bg-white text-black text-center px-5 py-2.5 rounded-lg hover:cursor-pointer font-medium">Get Started</div>
-          <div className="bg-[#27262A] text-white text-center px-5 py-2.5 rounded-lg hover: cursor-pointer font-medium">How It Works</div>
-        </div>
-        <div className="pt-24">
-          <Image src={dashboardOverlay} className="w-full h-full rounded-xl" alt="dashboard_overlay" />
-        </div>
+    <div className="flex flex-col justify-center items-center h-[40rem] ">
+      <h2 className="text-center text-[70px] font-bold">
+        GitHub Analytics <br />
+        and <span className="text-pink-500">Optimized</span>
+      </h2>
+      <div className=" absolute flex items-center justify-center top-48 left-28 box">
+        <Image src={bug2} width={100} height={100} alt="bug" />
+      </div>
+      <div className=" absolute flex items-center justify-center top-96 left-16 box">
+        <Image src={frog} width={100} height={100} alt="bug" />
+      </div>
+      <div className=" absolute flex items-center justify-center top-48 right-16 box">
+        <Image src={octopus} width={100} height={100} alt="bug" />
+      </div>
+      <div className=" absolute flex items-center justify-center top-96 right-28 box">
+        <Image src={whale} width={100} height={100} alt="bug" />
+      </div>
+      <p className="text-gray-600 text-center">
+        Easily monitor and manage your GitHub repositories with a centralized{" "}
+        <br />
+        dashboard. Keep track of commits, issues, and pull requests in
+        <br />
+        real-time, all in one place.
+      </p>
+      <div className="flex">
+        <button className="bg-pink-500 px-8 py-3 rounded-lg text-white font-medium mt-8">
+          Docs
+        </button>
       </div>
     </div>
   );
