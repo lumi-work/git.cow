@@ -24,27 +24,51 @@
     "link": "https://www.npmjs.com/package/prettier"
   },
   {
-    "title": "Lodash",
-    "usage": "Utility library for arrays, objects, and functions.",
+    "title": "Chalk",
+    "usage": "Terminal string styling done right.",
+    "downloads": "28M+",
+    "link": "https://www.npmjs.com/package/chalk"
+  },
+  {
+    "title": "Moment",
+    "usage": "Parse, validate, manipulate, and display dates and times in JavaScript.",
+    "downloads": "10M+",
+    "link": "https://www.npmjs.com/package/moment"
+  },
+  {
+    "title": "UUID",
+    "usage": "Generate RFC-compliant UUIDs in JavaScript.",
     "downloads": "35M+",
-    "link": "https://www.npmjs.com/package/lodash"
+    "link": "https://www.npmjs.com/package/uuid"
   },
   {
-    "title": "Axios",
-    "usage": "Promise-based HTTP client for the browser and Node.js.",
-    "downloads": "30M+",
-    "link": "https://www.npmjs.com/package/axios"
+    "title": "Bcrypt",
+    "usage": "Library to help hash passwords.",
+    "downloads": "13M+",
+    "link": "https://www.npmjs.com/package/bcrypt"
   },
   {
-    "title": "Dotenv",
-    "usage": "Loads environment variables from .env files.",
-    "downloads": "30M+",
-    "link": "https://www.npmjs.com/package/dotenv"
+    "title": "Winston",
+    "usage": "A versatile logging library.",
+    "downloads": "10M+",
+    "link": "https://www.npmjs.com/package/winston"
   },
   {
-    "title": "Prettier",
-    "usage": "Code formatter that ensures consistent code style.",
-    "downloads": "25M+",
-    "link": "https://www.npmjs.com/package/prettier"
+    "title": "Multer",
+    "usage": "Middleware for handling `multipart/form-data`, primarily for file uploads.",
+    "downloads": "5M+",
+    "link": "https://www.npmjs.com/package/multer"
+  },
+  {
+    "title": "Validator",
+    "usage": "A library for string validation and sanitization.",
+    "downloads": "10M+",
+    "link": "https://www.npmjs.com/package/validator"
+  },
+  {
+    "title": "Cors",
+    "usage": "Node.js CORS middleware.",
+    "downloads": "8M+",
+    "link": "https://www.npmjs.com/package/cors"
   }
 ]
