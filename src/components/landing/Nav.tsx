@@ -45,7 +45,7 @@ function Nav() {
       </ul>
       <button
         onClick={signInWithGithub}
-        className="flex items-center gap-2 bg-black text-white rounded-lg px-4 py-2 hover:-translate-y-[1px] transition-all shadow-md"
+        className="flex items-center gap-2 bg-black text-white rounded-lg px-4 py-1.5 hover:-translate-y-[1px] transition-all shadow-md"
       >
         <FaGithub className="text-[18px]" />
         <p className="text-[15px] font-medium">Get Started</p>
