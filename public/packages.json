@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Lodash",
+    "usage": "Utility library for arrays, objects, and functions.",
+    "downloads": "35M+",
+    "link": "https://www.npmjs.com/package/lodash"
+  },
+  {
+    "title": "Axios",
+    "usage": "Promise-based HTTP client for the browser and Node.js.",
+    "downloads": "30M+",
+    "link": "https://www.npmjs.com/package/axios"
+  },
+  {
+    "title": "Dotenv",
+    "usage": "Loads environment variables from .env files.",
+    "downloads": "30M+",
+    "link": "https://www.npmjs.com/package/dotenv"
+  },
+  {
+    "title": "Prettier",
+    "usage": "Code formatter that ensures consistent code style.",
+    "downloads": "25M+",
+    "link": "https://www.npmjs.com/package/prettier"
+  },
+  {
+    "title": "Lodash",
+    "usage": "Utility library for arrays, objects, and functions.",
+    "downloads": "35M+",
+    "link": "https://www.npmjs.com/package/lodash"
+  },
+  {
+    "title": "Axios",
+    "usage": "Promise-based HTTP client for the browser and Node.js.",
+    "downloads": "30M+",
+    "link": "https://www.npmjs.com/package/axios"
+  },
+  {
+    "title": "Dotenv",
+    "usage": "Loads environment variables from .env files.",
+    "downloads": "30M+",
+    "link": "https://www.npmjs.com/package/dotenv"
+  },
+  {
+    "title": "Prettier",
+    "usage": "Code formatter that ensures consistent code style.",
+    "downloads": "25M+",
+    "link": "https://www.npmjs.com/package/prettier"
+  }
+]

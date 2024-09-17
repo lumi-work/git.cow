@@ -141,8 +141,6 @@ function OverviewContent() {
     });
   }
 
-  console.log(badges);
-
   useEffect(() => {
     calculateAverage();
     handleBadge();
@@ -167,15 +165,15 @@ function OverviewContent() {
               {badges && badges.length > 0 ? (
                 badges.map((item: any) => {
                   if (item === "commitBadge") {
-                    return <Image src={commitBadges} width={60} height={60} alt="Commit Badge" />;
+                    return <Image src={commitBadges} width={55} height={55} alt="Commit Badge" />;
                   } else if (item === "prBadge") {
-                    return <Image src={prBadges} width={60} height={60} alt="PR Badge" />;
+                    return <Image src={prBadges} width={55} height={55} alt="PR Badge" />;
                   } else if (item === "issuesBadge") {
-                    return <Image src={issuesBadges} width={60} height={60} alt="Issues Badge" />;
+                    return <Image src={issuesBadges} width={55} height={55} alt="Issues Badge" />;
                   } else if (item === "hourBadge") {
-                    return <Image src={hourBadges} width={60} height={60} alt="Hour Badge" />;
+                    return <Image src={hourBadges} width={55} height={55} alt="Hour Badge" />;
                   } else if (item === "firstBadge") {
-                    return <Image src={firstBadges} width={60} height={60} alt="First Badge" />;
+                    return <Image src={firstBadges} width={55} height={55} alt="First Badge" />;
                   } else {
                     return null;
                   }
