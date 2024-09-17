@@ -148,7 +148,7 @@ function OverviewContent() {
               </div>
               <div>
                 {state.userProfile.following}{" "}
-                <span className="text-gray-500">Followers</span>
+                <span className="text-gray-500">Following</span>
               </div>
             </div>
             <div className="flex items-center justify-start gap-2 pt-4">
