@@ -27,7 +27,7 @@ function PageRouter() {
       {params?.toString() === "overview" ? <OverviewContent /> : null}
       {params?.toString() === "repository" ? <RepositoryContent /> : null}
       {params?.toString() === "projects" ? <ProjectsContent /> : null}
-      {params?.toString() === "analyicts" ? <AnalyictsContent /> : null}
+      {/* {params?.toString() === "analyicts" ? <AnalyictsContent /> : null} */}
       {params?.toString() === "packages" ? <PackagesContent /> : null}
     </>
   );
