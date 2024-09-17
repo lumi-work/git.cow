@@ -161,19 +161,69 @@ function OverviewContent() {
           </div>
           <div>
             <div className="text-md font-medium">Achievements</div>
-            <div className="flex item-center justify-center gap-3 pt-3">
+            <div className="flex items-center justify-center gap-3 pt-3">
               {badges && badges.length > 0 ? (
-                badges.map((item: any) => {
+                badges.map((item: any, index: number) => {
                   if (item === "commitBadge") {
-                    return <Image src={commitBadges} width={55} height={55} alt="Commit Badge" />;
+                    return (
+                      <div key={`commit-${index}`} className="group hover:cursor-pointer">
+                        <Image src={commitBadges} width={55} height={55} alt="Commit Badge" />
+                        <div className="opacity-0 group-hover:opacity-100 w-64 h-30 bg-gray-950 absolute rounded-xl text-white mt-4">
+                          <div className="p-4 flex-col items-center">
+                            <h2 className="font-medium">Commiter Badge</h2>
+                            <p className="text-sm text-gray-300">Awarded for consistently contributing commits that drive the project forward.</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
                   } else if (item === "prBadge") {
-                    return <Image src={prBadges} width={55} height={55} alt="PR Badge" />;
+                    return (
+                      <div key={`pr-${index}`} className="group hover:cursor-pointer">
+                        <Image src={prBadges} width={55} height={55} alt="Pull Requests Badge" />
+                        <div className="opacity-0 group-hover:opacity-100 w-64 h-30 bg-gray-950 absolute rounded-xl text-white mt-4">
+                          <div className="p-4 flex-col items-center">
+                            <h2 className="font-medium">Pull Request Badge</h2>
+                            <p className="text-sm text-gray-300">Recognized for submitting pull requests that enhance the codebase and bring valuable features.</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
                   } else if (item === "issuesBadge") {
-                    return <Image src={issuesBadges} width={55} height={55} alt="Issues Badge" />;
+                    return (
+                      <div key={`issues-${index}`} className="group hover:cursor-pointer">
+                        <Image src={issuesBadges} width={55} height={55} alt="Issues Badge" />
+                        <div className="opacity-0 group-hover:opacity-100 w-72 h-30 bg-gray-950 absolute rounded-xl text-white mt-4">
+                          <div className="p-4 flex-col items-center">
+                            <h2 className="font-medium">Issues Badge</h2>
+                            <p className="text-sm text-gray-300">Given for identifying and reporting issues, helping improve the overall project quality.</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
                   } else if (item === "hourBadge") {
-                    return <Image src={hourBadges} width={55} height={55} alt="Hour Badge" />;
+                    return (
+                      <div key={`hour-${index}`} className="group hover:cursor-pointer">
+                        <Image src={hourBadges} width={55} height={55} alt="Hour Badge" />
+                        <div className="opacity-0 group-hover:opacity-100 w-64 h-30 bg-gray-950 absolute rounded-xl text-white mt-4">
+                          <div className="p-4 flex-col items-center">
+                            <h2 className="font-medium">Hour Badge</h2>
+                            <p className="text-sm text-gray-300">Earned by dedicating time and effort to the project, ensuring steady progress.</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
                   } else if (item === "firstBadge") {
-                    return <Image src={firstBadges} width={55} height={55} alt="First Badge" />;
+                    return (
+                      <div key={`first-${index}`} className="group hover:cursor-pointer">
+                        <Image src={firstBadges} width={55} height={55} alt="First Badge" />
+                        <div className="opacity-0 group-hover:opacity-100 w-72 h-34 bg-gray-950 absolute rounded-xl text-white mt-4">
+                          <div className="p-4 flex-col items-center">
+                            <h2 className="font-medium">First Badge</h2>
+                            <p className="text-sm text-gray-300">Celebrating your first significant contribution to the project, marking the start of your journey.</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
                   } else {
                     return null;
                   }
