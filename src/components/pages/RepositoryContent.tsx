@@ -10,11 +10,14 @@ import { GrBook } from "react-icons/gr";
 import { FaCodeBranch } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { FaCode } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 function RepositoryContent() {
   const [refresh, setRefresh] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
+
   const state = useSelector((item: any) => item.repo);
 
   useEffect(() => {
@@ -25,7 +28,9 @@ function RepositoryContent() {
     setRefresh(!refresh);
   }
 
-  console.log(state);
+  function handleRepoRouter(repoId: any) {
+    router.push(`/dashboard?repo=${repoId}`);
+  }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -51,7 +56,7 @@ function RepositoryContent() {
           />
         </div>
 
-        <div className="grid grid-cols-2 mr-8 pb-8 max-md:grid-cols-1 gap-4">
+        <div className="grid grid-cols-2 mr-8 pb-8 max-md:grid-cols-1 gap-5">
           {state.repository && state.repository.length > 0 ? (
             state.repository.map((item: any, index: any) => {
               const updatedAt = new Date(item.updated_at);
@@ -61,8 +66,9 @@ function RepositoryContent() {
 
               return (
                 <div
+                  onClick={() => handleRepoRouter(item.id)}
                   key={`repo-${index}`}
-                  className="w-full h-48 bg-gray-200/20 mt-4 rounded-xl pl-6 pr-6 pt-6 border border-gray-200"
+                  className="w-full h-48 bg-gray-200/20 mt-4 rounded-xl pl-6 pr-6 pt-6 border border-gray-200 hover:scale-105 transition-all hover:cursor-pointer"
                 >
                   <div className="flex items-center w-full justify-between">
                     <div className="flex items-center gap-2 underline">

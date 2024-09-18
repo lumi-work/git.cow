@@ -36,7 +36,8 @@ function LeftBar() {
 
   function handleLeftBar(item: string) {
     setSelected(item);
-    const params = new URLSearchParams(searchParams);
+
+    const params = new URLSearchParams();
     params.set("page", item);
 
     const newURL = `/dashboard?${params.toString()}`;
