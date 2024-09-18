@@ -45,7 +45,7 @@ function Header() {
         </div>
       </div>
 
-      <div className="w-full pt-32">
+      <div className="w-full mt-36">
         <Image src={overlay} alt="overlay" className="rounded-2xl" />
       </div>
     </div>

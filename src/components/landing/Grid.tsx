@@ -1,47 +1,85 @@
 import React from "react";
+import Image from "next/image";
+import grid1 from "../../../public/grid1.png";
+import grid2 from "../../../public/grid2.png";
+import grid3 from "../../../public/grid3.png";
+import grid4 from "../../../public/grid4.png";
 
 function Grid() {
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
-        {/* Kart 1 */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-          <h2 className="text-gray-800 text-lg font-semibold">
-            The Dawn of Innovation
-          </h2>
-          <p className="text-gray-600 mt-4">
-            Explore the birth of groundbreaking ideas and inventions.
-          </p>
+    <div>
+      <h1 className="text-4xl font-semibold text-center">
+        GitHub <span className="text-pink-500">Analytics</span>
+      </h1>
+      <p className="text-center text-gray-500 mt-2">
+        Track, customize, and focus on your GitHub projects with ease.
+      </p>
+
+      <div className="grid grid-rows-[auto_1fr] grid-cols-1 gap-4 mt-10">
+        <div className="w-full bg-[#F3F2F5] h-[400px] mt-20 rounded-3xl shadow-md flex justify-between items-center border-gray-200 border-2 p-8">
+          <div className="flex flex-col">
+            <h1 className="text-pink-500 text-3xl font-semibold -mt-20">
+              GitHub Project Overview
+            </h1>
+            <p className="text-gray-500 mt-5 text-xl">
+              View your GitHub project summaries at a glance. <br />
+              Organize, analyze, and manage your repositories <br />
+              effortlessly with real-time insights.
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <Image
+              src={grid1}
+              width={400}
+              height={400}
+              alt="grid1"
+              className="border border-pink-500 rounded-3xl object-cover"
+            />
+          </div>
         </div>
 
-        {/* Kart 2 */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-          <h2 className="text-gray-800 text-lg font-semibold">
-            The Digital Revolution
-          </h2>
-          <p className="text-gray-600 mt-4">
-            Dive into the transformative power of technology.
-          </p>
-        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-[#F3F2F5] shadow-md rounded-3xl h-[400px] border-gray-200 border-2 p-8">
+            <div className="flex flex-col">
+              <h1 className="text-pink-500 text-3xl font-semibold">
+                Customizable Dashboards
+              </h1>
+              <p className="text-gray-500 mt-5 text-xl">
+                Tailor your GitHub dashboard to display <br />
+                the metrics that matter most, with flexible <br />
+                layouts and personalized settings.
+              </p>
+              <Image
+                src={grid2}
+                width={400}
+                height={400}
+                alt="grid2"
+                className="border border-pink-500 rounded-3xl object-cover mt-5"
+              />
+            </div>
+          </div>
 
-        {/* Kart 3 */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-          <h2 className="text-gray-800 text-lg font-semibold">
-            The Art of Design
-          </h2>
-          <p className="text-gray-600 mt-4">
-            Discover the beauty of thoughtful and functional design.
-          </p>
-        </div>
-
-        {/* Kart 4 */}
-        <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-          <h2 className="text-gray-800 text-lg font-semibold">
-            The Power of Communication
-          </h2>
-          <p className="text-gray-600 mt-4">
-            Understand the impact of effective communication in our lives.
-          </p>
+          <div className="bg-[#F3F2F5] shadow-md rounded-3xl h-[400px] border-gray-200 border-2 p-8 overflow-hidden relative">
+            <div className="flex flex-col">
+              <h1 className="text-pink-500 text-3xl font-semibold ml-4">
+                Focus on Key Metrics
+              </h1>
+              <p className="ml-4 text-gray-500 mt-3 text-xl">
+                Stay focused on critical performance indicators <br />
+                with a clean and organized interface, <br />
+                designed for efficiency.
+              </p>
+              <div className="absolute right-5 bottom-5">
+                <Image
+                  src={grid3}
+                  width={250}
+                  height={250}
+                  alt="grid3"
+                  className="border border-pink-500 rounded-3xl object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

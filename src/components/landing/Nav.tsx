@@ -29,9 +29,11 @@ function Nav() {
       <Link href={"/"}>
         <Image src={logo} width={80} height={80} alt="logo" />
       </Link>
-      <ul className="flex items-center gap-8 text-[15px] text-gray-700">
+      <div className="w-64 h-32 blur-[200px] bg-pink-500 ml-80 absolute "></div>
+
+      <ul className="flex items-center gap-8 text-[15px] text-gray-700 relative">
         <li className="hover:text-pink-500 transition-all cursor-pointer">
-          Team
+          <Link href={"/team"}>Team</Link>
         </li>
         <li className="hover:text-pink-500 transition-all cursor-pointer">
           Discord

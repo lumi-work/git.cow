@@ -1,3 +1,5 @@
+import Contact from "@/components/landing/Contact";
+import Footer from "@/components/landing/Footer";
 import Grid from "@/components/landing/Grid";
 import Header from "@/components/landing/Header";
 import Nav from "@/components/landing/Nav";
@@ -10,6 +12,8 @@ export default function Home() {
         <Nav />
         <Header />
         <Grid />
+        <Contact />
+        <Footer />
       </div>
       <div className="absolute inset-0 -z-10 h-[80vh] w-full mx-auto bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]" />
     </main>
