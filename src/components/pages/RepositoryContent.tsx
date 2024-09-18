@@ -47,7 +47,7 @@ function RepositoryContent() {
           <h2 className="text-lg font-semibold text-gray-800 flex-1">
             Repository{" "}
             <span className="text-gray-500 text-sm">
-              ({state.repository.length})
+              ({state.repository.length || 0})
             </span>
           </h2>
           <IoMdRefresh
@@ -106,10 +106,13 @@ function RepositoryContent() {
           )}
         </div>
 
-        <div className="pb-8">
-          You have <span className="underline">{state.repository.length}</span>{" "}
-          repository for public.
-        </div>
+        {state.repository.length > 0 ? (
+          <div className="pb-8">
+            You have{" "}
+            <span className="underline">{state.repository.length}</span>{" "}
+            repository for public.
+          </div>
+        ) : null}
       </div>
     </div>
   );

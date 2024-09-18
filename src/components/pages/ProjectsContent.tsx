@@ -30,7 +30,7 @@ function ProjectsContent() {
       <h2 className="text-lg font-semibold text-gray-800 flex-1 mb-6">
         Organizations{" "}
         <span className="text-gray-500 text-sm">
-          ({state.organizations.length})
+          ({state.organizations.length || 0})
         </span>
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
