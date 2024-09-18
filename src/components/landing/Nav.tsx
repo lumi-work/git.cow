@@ -39,7 +39,7 @@ function Nav() {
           Discord
         </li>
         <li className="hover:text-pink-500 transition-all cursor-pointer">
-          Docs
+          <Link href={"https://git-cow.gitbook.io/git.cow-docs"}> Docs</Link>
         </li>
         <li className="hover:text-pink-500 transition-all cursor-pointer">
           Company

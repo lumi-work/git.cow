@@ -8,6 +8,7 @@ import whale from "../../../public/whale.svg";
 import octopus from "../../../public/octopus.svg";
 import frog from "../../../public/frog.svg";
 import overlay from "../../../public/Git_cow.jpeg";
+import Link from "next/link";
 
 function Header() {
   return (
@@ -37,9 +38,11 @@ function Header() {
       </p>
 
       <div className="flex items-center justify-center gap-8 mt-10">
-        <div className="px-8 py-2 rounded-lg bg-black text-white font-medium">
-          Docs
-        </div>
+        <Link href={"https://git-cow.gitbook.io/git.cow-docs"}>
+          <div className="px-8 py-2 rounded-lg bg-black text-white font-medium">
+            Docs
+          </div>
+        </Link>
         <div>
           <Avatars />
         </div>
