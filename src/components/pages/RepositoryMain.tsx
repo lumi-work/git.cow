@@ -10,6 +10,7 @@ import { FaEye } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import Dashboard from "@/components/dashboard/Line";
 import DonutChart from "@/components/dashboard/DonutChart";
+import Tooltips from "@/components/dashboard/Tooltip";
 
 function RepositoryMain() {
   const dispatch = useDispatch<AppDispatch>();
@@ -43,17 +44,19 @@ function RepositoryMain() {
 
   async function handleCommitsData() {
     try {
-      const req = await fetch(
-        `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/commits`
-      );
+      if (repo && repo.length > 0) {
+        const req = await fetch(
+          `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/commits`
+        );
 
-      if (!req.ok) {
-        throw new Error(`GitHub API error: ${req.statusText}`);
-      }
+        if (!req.ok) {
+          throw new Error(`GitHub API error: ${req.statusText}`);
+        }
 
-      const data = await req.json();
-      if (data) {
-        setCommitsLength(data.length);
+        const data = await req.json();
+        if (data) {
+          setCommitsLength(data.length);
+        }
       }
     } catch (error) {
       console.error("Error fetching commits:", error);
@@ -62,17 +65,19 @@ function RepositoryMain() {
 
   async function handleIssuesData() {
     try {
-      const req = await fetch(
-        `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/issues`
-      );
+      if (repo && repo.length > 0) {
+        const req = await fetch(
+          `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/issues`
+        );
 
-      if (!req.ok) {
-        throw new Error(`GitHub API error: ${req.statusText}`);
-      }
+        if (!req.ok) {
+          throw new Error(`GitHub API error: ${req.statusText}`);
+        }
 
-      const data = await req.json();
-      if (data) {
-        setIssuesLength(data.length);
+        const data = await req.json();
+        if (data) {
+          setIssuesLength(data.length);
+        }
       }
     } catch (error) {
       console.error("Error fetching commits:", error);
@@ -81,17 +86,19 @@ function RepositoryMain() {
 
   async function handlePrData() {
     try {
-      const req = await fetch(
-        `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/pulls`
-      );
+      if (repo && repo.length > 0) {
+        const req = await fetch(
+          `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/pulls`
+        );
 
-      if (!req.ok) {
-        throw new Error(`GitHub API error: ${req.statusText}`);
-      }
+        if (!req.ok) {
+          throw new Error(`GitHub API error: ${req.statusText}`);
+        }
 
-      const data = await req.json();
-      if (data) {
-        setPrLength(data.length);
+        const data = await req.json();
+        if (data) {
+          setPrLength(data.length);
+        }
       }
     } catch (error) {
       console.error("Error fetching commits:", error);
@@ -157,39 +164,36 @@ function RepositoryMain() {
             </div>
 
             <div className="border-t border-gray-200 mt-6 pt-6">
-              <div>
-                <h2 className="font-medium">Details Repository</h2>
-              </div>
-              <div className="flex items-center justify-between w-full pt-10">
+              <div className="flex items-center justify-between w-full pt-3">
                 <div>
                   <h2 className="font-semibold">Total Commits</h2>
-                  <p className="pt-2 text-center">
+                  <div className="pt-2 text-center">
                     {commitsLength >= 30 ? (
                       <p>{commitsLength}+</p>
                     ) : (
                       <p>{commitsLength}</p>
                     )}
-                  </p>
+                  </div>
                 </div>
                 <div>
                   <h2 className="font-semibold">Total Issues</h2>
-                  <p className="pt-2 text-center">
+                  <div className="pt-2 text-center">
                     {issuesLength >= 30 ? (
                       <p>{issuesLength}+</p>
                     ) : (
                       <p>{issuesLength}</p>
                     )}
-                  </p>
+                  </div>
                 </div>
                 <div>
                   <h2 className="font-semibold">Total Pull Request</h2>
-                  <p className="pt-2 text-center">
+                  <div className="pt-2 text-center">
                     {prLength >= 30 ? <p>{prLength}+</p> : <p>{prLength}</p>}
-                  </p>
+                  </div>
                 </div>
                 <div>
                   <h2 className="font-semibold">Hour Spent</h2>
-                  <p className="pt-2 text-center">{totalTime}</p>
+                  <p className="pt-2 text-center">{totalTime}/hr</p>
                 </div>
               </div>
             </div>

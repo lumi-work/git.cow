@@ -105,24 +105,34 @@ function LeftBar() {
           </div>
         </div>
       </div>
-      <div className="text-gray-600 text-md flex items-end h-full pb-4 w-full">
-        <div className="flex items-center justify-start bg-gray-100 rounded-lg py-4 px-4 w-full text-gray-700 mr-6 gap-2 shadow-md">
-          <img
-            src={state.userProfile.avatar_url}
-            width={40}
-            height={40}
-            alt="userimage"
-            className="border-2 border-gray-300 rounded-full object-cover -ml-2"
-          />
-          <div className="flex flex-col justify-center flex-grow">
-            <p className="text-lg font-semibold">@{state.userProfile.login}</p>
-            <p className="text-gray-500 text-xs">ID: {state.userProfile.id}</p>
-          </div>
-          <div className="ml-auto">
-            <Signout />
+      {state.loading ? (
+        <div className="flex items-end h-full pb-4 w-full pr-6">
+          <div className="w-full h-14 bg-gray-200/50 animate-pulse rounded-xl"></div>
+        </div>
+      ) : (
+        <div className="text-gray-600 text-md flex items-end h-full pb-4 w-full">
+          <div className="flex items-center justify-start bg-gray-100 rounded-lg py-4 px-4 w-full text-gray-700 mr-6 gap-2 shadow-md">
+            <img
+              src={state.userProfile.avatar_url}
+              width={40}
+              height={40}
+              alt="userimage"
+              className="border-2 border-gray-300 rounded-full object-cover -ml-2"
+            />
+            <div className="flex flex-col justify-center flex-grow">
+              <p className="text-lg font-semibold">
+                @{state.userProfile.login}
+              </p>
+              <p className="text-gray-500 text-xs">
+                ID: {state.userProfile.id}
+              </p>
+            </div>
+            <div className="ml-auto">
+              <Signout />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

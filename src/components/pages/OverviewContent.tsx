@@ -55,7 +55,7 @@ function OverviewContent() {
   useEffect(() => {
     dispatch(fetchUser());
     dispatch(fetchUserEvents());
-  }, []);
+  }, [dispatch]);
 
   function calculateAverage() {
     const commitsRate =
@@ -147,8 +147,42 @@ function OverviewContent() {
 
   useEffect(() => {
     calculateAverage();
+  }, [events.userEvent]);
+
+  useEffect(() => {
     handleBadge();
-  }, [events.userEvent, events]);
+  }, [averages]);
+
+  if (state.loading && state.userProfile.length === 0) {
+    return (
+      <div className="flex flex-col items-start justify-start m-8 mt-16">
+        <div className="flex items-center justify-between w-full">
+          <div className="w-72 h-28 bg-gray-200/50 animate-pulse rounded-xl"></div>
+          <div className="w-72 h-16 bg-gray-200/50 animate-pulse rounded-xl"></div>
+        </div>
+        <div className="w-56 h-8 bg-gray-200/50 animate-pulse rounded-xl mt-6"></div>
+        <div className="w-48 h-8 bg-gray-200/50 animate-pulse rounded-xl mt-2"></div>
+        <div className="w-40 h-8 bg-gray-200/50 animate-pulse rounded-xl mt-2"></div>
+        <div className="w-48 h-8 bg-gray-200/50 animate-pulse rounded-xl mt-2"></div>
+        <div className="mt-16">
+          <div className="w-48 h-12 bg-gray-200/50 animate-pulse rounded-xl"></div>
+        </div>
+        <div className="flex items-center justify-between w-full mt-4">
+          <div className="w-64 h-36 bg-gray-200/50 animate-pulse rounded-xl"></div>
+          <div className="w-64 h-36 bg-gray-200/50 animate-pulse rounded-xl"></div>
+          <div className="w-64 h-36 bg-gray-200/50 animate-pulse rounded-xl"></div>
+          <div className="w-64 h-36 bg-gray-200/50 animate-pulse rounded-xl"></div>
+        </div>
+        <div className="mt-16">
+          <div className="w-48 h-12 bg-gray-200/50 animate-pulse rounded-xl"></div>
+        </div>
+        <div className="flex items-center justify-between w-full gap-6 mt-4">
+          <div className="w-full h-56 bg-gray-200/50 animate-pulse rounded-xl"></div>
+          <div className="w-72 h-56 bg-gray-200/50 animate-pulse rounded-xl"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="m-8">

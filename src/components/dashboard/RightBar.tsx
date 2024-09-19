@@ -18,8 +18,16 @@ function RightBar() {
     dispatch(fetchUserEvents()).finally(() => setLoading(false));
   }, [dispatch]);
 
-  if (loading) {
-    return <p className="text-gray-500 mt-4 text-center">Loading events...</p>;
+  if (state.loading || loading) {
+    return (
+      <div className="flex flex-col items-start- justify-start ml-4 mt-8 mr-4">
+        <div className="w-48 h-12 bg-gray-200/50 animate-pulse rounded-xl"></div>
+        <div className="w-full h-48 bg-gray-200/50 animate-pulse rounded-xl mt-6"></div>
+        <div className="w-full h-48 bg-gray-200/50 animate-pulse rounded-xl mt-6"></div>
+        <div className="w-full h-48 bg-gray-200/50 animate-pulse rounded-xl mt-6"></div>
+        <div className="w-full h-48 bg-gray-200/50 animate-pulse rounded-xl mt-6"></div>
+      </div>
+    );
   }
 
   return (

@@ -46,7 +46,7 @@ function DonutChart({ repoName, repoOwner }: any) {
       const colors = [];
       for (let i = 0; i < count; i++) {
         const hue = (i * 137.508) % 360;
-        colors.push(`hsl(${hue}, 70%, 60%)`);
+        colors.push(`hsl(${hue}, 80%, 60%)`);
       }
       return colors;
     };
@@ -58,7 +58,7 @@ function DonutChart({ repoName, repoOwner }: any) {
         datasets: [
           {
             data: [1],
-            backgroundColor: ["#e0e0e0"],
+            backgroundColor: ["#333"],
             hoverOffset: 0,
           },
         ],
