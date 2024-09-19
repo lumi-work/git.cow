@@ -3,7 +3,6 @@ import Image from "next/image";
 import grid1 from "../../../public/grid1.png";
 import grid2 from "../../../public/grid2.png";
 import grid3 from "../../../public/grid3.png";
-import grid4 from "../../../public/grid4.png";
 
 function Grid() {
   return (

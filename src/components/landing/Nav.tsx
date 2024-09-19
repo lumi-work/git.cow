@@ -5,14 +5,12 @@ import React from "react";
 import logo from "../../../public/gitcow.svg";
 import { FaGithub } from "react-icons/fa";
 import { createClient } from "@/utils/client";
-import { useRouter } from "next/navigation";
 
 function Nav() {
   const supabase = createClient();
-  const router = useRouter();
 
   async function signInWithGithub() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
         redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,

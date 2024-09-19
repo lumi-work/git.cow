@@ -20,7 +20,7 @@ export default function Home() {
                 Team
               </h1>
               <p className="text-center text-xl mt-2 text-gray-500">
-                Hello, welcome to our team. We are best app and web developer.{" "}
+                Hello, welcome to our team. We are best app and web developer.
                 <br />U can join our team. We are friendly. Join our community
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-20">
@@ -67,8 +67,8 @@ export default function Home() {
                 Excited to join our team?
               </h2>
               <p className="text-gray-500 pt-1">
-                We can&apos;t wait to hear from you! If you&apos;re interested
-                in working with us, don&apos;t hesitate—reach out now!"
+                We can&apos;t wait to hear from you! If you&quot;re interested
+                in working with us, don&apos;t hesitate—reach out now
               </p>
               <div className="mt-6">
                 <button className="bg-black text-white rounded-lg px-4 py-1.5 flex items-center gap-2">

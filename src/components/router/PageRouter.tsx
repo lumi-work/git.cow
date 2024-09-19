@@ -6,17 +6,14 @@ import React, { useEffect, useState } from "react";
 import OverviewContent from "@/components/pages/OverviewContent";
 import RepositoryContent from "@/components/pages/RepositoryContent";
 import ProjectsContent from "@/components/pages/ProjectsContent";
-import AnalyictsContent from "@/components/pages/AnalyictsContent";
 import PackagesContent from "@/components/pages/PackagesContent";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "@/lib/store";
+import { useSelector } from "react-redux";
 import RepositoryMain from "../pages/RepositoryMain";
 
 function PageRouter() {
   const searchParams = useSearchParams();
   const pageParam = searchParams.get("page");
   const repoParam = searchParams.get("repo");
-  const dispatch = useDispatch<AppDispatch>();
   const [routerRepo, setRouterRepo] = useState([]);
   const router = useRouter();
   const state = useSelector((item: any) => item.repo);

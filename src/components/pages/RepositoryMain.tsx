@@ -10,7 +10,6 @@ import { FaEye } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import Dashboard from "@/components/dashboard/Line";
 import DonutChart from "@/components/dashboard/DonutChart";
-import Tooltips from "@/components/dashboard/Tooltip";
 
 function RepositoryMain() {
   const dispatch = useDispatch<AppDispatch>();
