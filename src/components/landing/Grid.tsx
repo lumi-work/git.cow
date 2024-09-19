@@ -33,7 +33,7 @@ function Grid() {
               width={400}
               height={400}
               alt="grid1"
-              className="border border-pink-500 rounded-3xl object-cover"
+              className="border  rounded-3xl object-cover"
             />
           </div>
         </div>
@@ -54,7 +54,7 @@ function Grid() {
                 width={400}
                 height={400}
                 alt="grid2"
-                className="border border-pink-500 rounded-3xl object-cover mt-5"
+                className="border rounded-3xl object-cover mt-5"
               />
             </div>
           </div>
@@ -75,7 +75,7 @@ function Grid() {
                   width={250}
                   height={250}
                   alt="grid3"
-                  className="border border-pink-500 rounded-3xl object-cover"
+                  className="border rounded-3xl object-cover"
                 />
               </div>
             </div>
