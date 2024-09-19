@@ -23,22 +23,19 @@ ChartJS.register(
 
 interface LineChartProps {
   labels: string[];
-  dataPoints: number[];
+  datasets: {
+    label: string;
+    data: number[];
+    borderColor: string;
+    backgroundColor: string;
+    fill: boolean;
+  }[];
 }
 
-const LineChart: React.FC<LineChartProps> = ({ labels, dataPoints }) => {
+const LineChart: React.FC<LineChartProps> = ({ labels, datasets }) => {
   const data = {
     labels,
-    datasets: [
-      {
-        label: "Commits",
-        data: dataPoints,
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        fill: true,
-        tension: 0.3,
-      },
-    ],
+    datasets,
   };
 
   const options = {
@@ -49,7 +46,7 @@ const LineChart: React.FC<LineChartProps> = ({ labels, dataPoints }) => {
       },
       title: {
         display: true,
-        text: "Commits Graph",
+        text: "Repository Activity Graph",
       },
     },
     scales: {
