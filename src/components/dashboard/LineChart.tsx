@@ -31,7 +31,7 @@ const LineChart: React.FC<LineChartProps> = ({ labels, dataPoints }) => {
     labels,
     datasets: [
       {
-        label: "Sample Data",
+        label: "Commits",
         data: dataPoints,
         borderColor: "rgba(75, 192, 192, 1)",
         backgroundColor: "rgba(75, 192, 192, 0.2)",
@@ -49,7 +49,7 @@ const LineChart: React.FC<LineChartProps> = ({ labels, dataPoints }) => {
       },
       title: {
         display: true,
-        text: "Line Chart Example",
+        text: "Commits Graph",
       },
     },
     scales: {

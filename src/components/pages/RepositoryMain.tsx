@@ -36,6 +36,27 @@ function RepositoryMain() {
     }
   }, [state.repository, paramsValue]);
 
+  const [commitsLength, setCommitsLength] = useState(0);
+
+  async function handleLineData() {
+    try {
+      const req = await fetch(
+        `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/commits`
+      );
+
+      if (!req.ok) {
+        throw new Error(`GitHub API error: ${req.statusText}`);
+      }
+
+      const data = await req.json();
+      if (data) {
+        setCommitsLength(data.length);
+      }
+    } catch (error) {
+      console.error("Error fetching commits:", error);
+    }
+  }
+
   console.log(repo);
 
   return (
@@ -82,13 +103,43 @@ function RepositoryMain() {
             </div>
 
             <div className="border-t border-gray-200 mt-6 pt-6">
+              <div>
+                <h2 className="font-medium">Details Repository</h2>
+              </div>
+              <div className="flex items-center justify-between w-full pt-10">
+                <div>
+                  <h2>Total Commits</h2>
+                  <p>{commitsLength}</p>
+                </div>
+                <div>
+                  <h2>Total Issues</h2>
+                  <p></p>
+                </div>
+                <div>
+                  <h2>Total Pull Request</h2>
+                  <p></p>
+                </div>
+                <div>
+                  <h2>Hour Spent</h2>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-200 mt-6 pt-6">
               <h2 className="font-medium">Contributions Graph</h2>
               <div className="mt-6 flex items-center justify-between w-full">
                 <div className="w-3/4">
-                  <Dashboard />
+                  <Dashboard
+                    repoName={repo[0].name}
+                    repoOwner={repo[0].owner.login}
+                  />
                 </div>
                 <div className="w-1/4">
-                  <DonutChart />
+                  <DonutChart
+                    repoName={repo[0].name}
+                    repoOwner={repo[0].owner.login}
+                  />
                 </div>
               </div>
             </div>
