@@ -37,8 +37,11 @@ function RepositoryMain() {
   }, [state.repository, paramsValue]);
 
   const [commitsLength, setCommitsLength] = useState(0);
+  const [issuesLength, setIssuesLength] = useState(0);
+  const [prLength, setPrLength] = useState(0);
+  const [totalTime, setTotalTime] = useState(0);
 
-  async function handleLineData() {
+  async function handleCommitsData() {
     try {
       const req = await fetch(
         `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/commits`
@@ -57,7 +60,58 @@ function RepositoryMain() {
     }
   }
 
-  console.log(repo);
+  async function handleIssuesData() {
+    try {
+      const req = await fetch(
+        `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/issues`
+      );
+
+      if (!req.ok) {
+        throw new Error(`GitHub API error: ${req.statusText}`);
+      }
+
+      const data = await req.json();
+      if (data) {
+        setIssuesLength(data.length);
+      }
+    } catch (error) {
+      console.error("Error fetching commits:", error);
+    }
+  }
+
+  async function handlePrData() {
+    try {
+      const req = await fetch(
+        `https://api.github.com/repos/${repo[0].owner.login}/${repo[0].name}/pulls`
+      );
+
+      if (!req.ok) {
+        throw new Error(`GitHub API error: ${req.statusText}`);
+      }
+
+      const data = await req.json();
+      if (data) {
+        setPrLength(data.length);
+      }
+    } catch (error) {
+      console.error("Error fetching commits:", error);
+    }
+  }
+
+  useEffect(() => {
+    handleCommitsData();
+    handleIssuesData();
+    handlePrData();
+  }, [repo]);
+
+  function handleTimeSpent() {
+    const totalTimes = (commitsLength + prLength) * 0.5 + issuesLength * 0.2;
+    setTotalTime(totalTimes);
+  }
+
+  useEffect(() => {
+    handleTimeSpent();
+  }, [commitsLength, prLength, issuesLength]);
 
   return (
     <div className="mt-8 p-4 rounded-lg w-full">
@@ -108,20 +162,34 @@ function RepositoryMain() {
               </div>
               <div className="flex items-center justify-between w-full pt-10">
                 <div>
-                  <h2>Total Commits</h2>
-                  <p>{commitsLength}</p>
+                  <h2 className="font-semibold">Total Commits</h2>
+                  <p className="pt-2 text-center">
+                    {commitsLength >= 30 ? (
+                      <p>{commitsLength}+</p>
+                    ) : (
+                      <p>{commitsLength}</p>
+                    )}
+                  </p>
                 </div>
                 <div>
-                  <h2>Total Issues</h2>
-                  <p></p>
+                  <h2 className="font-semibold">Total Issues</h2>
+                  <p className="pt-2 text-center">
+                    {issuesLength >= 30 ? (
+                      <p>{issuesLength}+</p>
+                    ) : (
+                      <p>{issuesLength}</p>
+                    )}
+                  </p>
                 </div>
                 <div>
-                  <h2>Total Pull Request</h2>
-                  <p></p>
+                  <h2 className="font-semibold">Total Pull Request</h2>
+                  <p className="pt-2 text-center">
+                    {prLength >= 30 ? <p>{prLength}+</p> : <p>{prLength}</p>}
+                  </p>
                 </div>
                 <div>
-                  <h2>Hour Spent</h2>
-                  <p></p>
+                  <h2 className="font-semibold">Hour Spent</h2>
+                  <p className="pt-2 text-center">{totalTime}</p>
                 </div>
               </div>
             </div>
