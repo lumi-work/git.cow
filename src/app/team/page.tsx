@@ -67,8 +67,8 @@ export default function Home() {
                 Excited to join our team?
               </h2>
               <p className="text-gray-500 pt-1">
-                We can't wait to hear from you! If you're interested in working
-                with us, don't hesitate—reach out now!"
+                We can&apos;t wait to hear from you! If you&apos;re interested
+                in working with us, don&apos;t hesitate—reach out now!"
               </p>
               <div className="mt-6">
                 <button className="bg-black text-white rounded-lg px-4 py-1.5 flex items-center gap-2">
