@@ -11,14 +11,17 @@ import { FaRegStar } from "react-icons/fa";
 import Dashboard from "@/components/dashboard/Line";
 import DonutChart from "@/components/dashboard/DonutChart";
 import Tooltips from "@/components/dashboard/Tooltip";
+import { fetchOrganization } from "@/lib/features/organizationSlice";
 
 function RepositoryMain() {
   const dispatch = useDispatch<AppDispatch>();
   const params = useSearchParams();
   const [repo, setRepo] = useState<any>([]);
+  const [organizationRepository, setOrganizationRepository] = useState<any>([]);
 
   useEffect(() => {
     dispatch(fetchRepository());
+    dispatch(fetchOrganization());
   }, [dispatch]);
 
   const state = useSelector((item: any) => item.repo);
