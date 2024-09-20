@@ -33,7 +33,7 @@ function PackagesContent() {
           ? packages.map((pkg: any, index: any) => (
               <div
                 key={index}
-                className="bg-gray-100 cursor-pointer p-6 w-full h-48 flex flex-col justify-between rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-gray-100 p-6 w-full h-48 flex flex-col justify-between rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <div>
                   <a href={pkg.link} target="_blank">
