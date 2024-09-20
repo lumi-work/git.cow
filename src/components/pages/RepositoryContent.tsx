@@ -4,7 +4,7 @@ import { fetchRepository } from "@/lib/features/repositorySlice";
 import { AppDispatch } from "@/lib/store";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { LuGitFork } from "react-icons/lu";
 import { GrBook } from "react-icons/gr";
 import { FaCodeBranch } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
@@ -124,6 +124,10 @@ function RepositoryContent() {
                       <div className="flex items-center gap-2">
                         <FaCodeBranch className="text-blue-500" />
                         {item.default_branch}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <LuGitFork className="text-pink-500" />
+                        {item.forks_count}
                       </div>
                       <div className="flex items-center gap-1">
                         <FaRegStar className="text-yellow-500" />
