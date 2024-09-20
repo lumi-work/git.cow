@@ -75,9 +75,9 @@ function LeftBar() {
             <GrBook /> <p>Repository</p>
           </div>
           <div
-            onClick={() => handleLeftBar("projects")}
+            onClick={() => handleLeftBar("organizations")}
             className={`hover:bg-gray-100 rounded-lg w-full flex items-center gap-2 py-1 pl-1 mt-2 text-[16px] text-gray-600 cursor-pointer ${
-              selected === "projects" ? "bg-gray-100" : ""
+              selected === "organizations" ? "bg-gray-100" : ""
             }`}
           >
             <HiOutlineServer /> <p>Organizations</p>

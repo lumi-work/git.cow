@@ -42,7 +42,7 @@ function PageRouter() {
     <>
       {pageParam === "overview" && <OverviewContent />}
       {pageParam === "repository" && <RepositoryContent />}
-      {pageParam === "projects" && <ProjectsContent />}
+      {pageParam === "organizations" && <ProjectsContent />}
       {/* {pageParam === "analyicts" && <AnalyictsContent />} */}
       {pageParam === "packages" && <PackagesContent />}
       {routerRepo.length > 0 && repoParam ? <RepositoryMain /> : null}
