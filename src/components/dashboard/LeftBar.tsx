@@ -80,7 +80,7 @@ function LeftBar() {
               selected === "projects" ? "bg-gray-100" : ""
             }`}
           >
-            <HiOutlineServer /> <p>Projects</p>
+            <HiOutlineServer /> <p>Organizations</p>
           </div>
         </div>
         <div className="flex-col items-start mt-8 w-full pr-8">

@@ -79,8 +79,15 @@ function RepositoryContent() {
                       <span className="text-gray-600">{formattedDate}</span>
                     </div>
                   </div>
-                  <div className="text-gray-400 pt-2 text-sm">
-                    {item.description || "No description."}
+                  <div className="text-gray-400 pt-2 text-sm h-12">
+                    {item.description && item.description.length > 99 ? (
+                      <p>
+                        {item.description.slice(0, 99)}
+                        ...
+                      </p>
+                    ) : (
+                      <p>{item.description || "No have description"}</p>
+                    )}
                   </div>
                   <div className="flex items-center justify-between w-full pt-16">
                     <div className="flex items-center gap-4 text-md">
