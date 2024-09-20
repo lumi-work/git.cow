@@ -25,8 +25,6 @@ function ProjectsContent() {
 
   const members = useSelector((item: any) => item.organizationMembers);
 
-  console.log(state);
-
   return (
     <div className="mt-8 ml-8">
       <h2 className="text-lg font-semibold text-gray-800 flex-1 mb-6">
