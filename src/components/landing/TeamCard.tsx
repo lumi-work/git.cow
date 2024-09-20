@@ -7,8 +7,8 @@ function TeamCard({ username, color, rolename, image }: any) {
       <Image
         src={image}
         alt={username}
-        width={96}
-        height={96}
+        width={80}
+        height={80}
         className="rounded-full border-2 border-gray-300 mr-4"
       />
       <div className="flex flex-col">
