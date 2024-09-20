@@ -34,7 +34,7 @@ function Nav() {
           <Link href={"/team"}>Team</Link>
         </li>
         <li className="hover:text-pink-500 transition-all cursor-pointer">
-          Discord
+         <Link href={"https://discord.com/invite/busS7rtq45"}> Discord</Link>
         </li>
         <li className="hover:text-pink-500 transition-all cursor-pointer">
           <Link href={"https://git-cow.gitbook.io/git.cow-docs"}> Docs</Link>
