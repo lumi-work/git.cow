@@ -12,8 +12,6 @@ import { FaCode } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 function RepositoryContent() {
-  const [refresh, setRefresh] = useState(false);
-
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
@@ -21,7 +19,7 @@ function RepositoryContent() {
 
   useEffect(() => {
     dispatch(fetchRepository());
-  }, [refresh]);
+  }, []);
 
   function handleRepoRouter(repoId: any) {
     router.push(`/dashboard?repo=${repoId}`);
