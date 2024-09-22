@@ -16,27 +16,27 @@ export default function App() {
     >
       <Avatar
         src={
-          "https://cdn.discordapp.com/attachments/1142449993794469908/1286655508706758778/image.png?ex=66eeb2d2&is=66ed6152&hm=929f2b0b397d4fc3bd9c68699ed25c9e074db0682b59e44992dc125f5cc1670d&"
+          "https://i.pinimg.com/736x/54/d3/55/54d3555c5e8edeeb651fe1ce0033b76f.jpg"
         }
       />
       <Avatar
         src={
-          "https://cdn.discordapp.com/attachments/1142449993794469908/1286655546199511114/image.png?ex=66eeb2db&is=66ed615b&hm=0df0ebcf252fb3228ee31a2ddfbd0e1a4e47c92c8be4ba1ee104415b91bf8bbb&"
+          "https://i.pinimg.com/736x/ad/1a/b1/ad1ab1a57c26932348b91b5c3b5e4b2b.jpg"
         }
       />
       <Avatar
         src={
-          "https://cdn.discordapp.com/attachments/1142449993794469908/1286655575660433441/image.png?ex=66eeb2e2&is=66ed6162&hm=691db72715500408fbe77c8846c0354e8a44a0047e87f9773cb9a6f3e005873e&"
+          "https://i.pinimg.com/736x/67/44/b7/6744b77fad781be72bb282748a67581a.jpg"
         }
       />
       <Avatar
         src={
-          "https://cdn.discordapp.com/attachments/1142449993794469908/1286655599827877980/image.png?ex=66eeb2e7&is=66ed6167&hm=385b9e8e69bcaace2eaa5620adb8dad725d9210c01b3ecd1880c5aa9a1f656e4&"
+          "https://i.pinimg.com/736x/7b/f0/52/7bf052d16c199bb6cab7ee52c0034bdf.jpg"
         }
       />
       <Avatar
         src={
-          "https://cdn.discordapp.com/attachments/1142449993794469908/1286655633264873544/image.png?ex=66eeb2ef&is=66ed616f&hm=487dc302fb2b3bd25c7d3daa43fb6b321401d5d4ead5c3986fed75f5d9f9ece7&"
+          "https://i.pinimg.com/736x/c0/35/0d/c0350d16d9e452a20fabdf069473ba5a.jpg"
         }
       />
     </AvatarGroup>
