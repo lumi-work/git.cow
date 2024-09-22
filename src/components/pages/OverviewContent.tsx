@@ -206,9 +206,9 @@ function OverviewContent() {
               <p className="text-gray-600 text-sm">
                 ID: {state.userProfile.id}
               </p>
-              <p className="text-md text-gray-700">
-                {state.userProfile.bio && state.userProfile.bio.length > 50 ? (
-                  <p>{state.userProfile.bio.slice(0, 50)}...</p>
+              <p className="text-md text-gray-700 max-w-[600px]">
+                {state.userProfile.bio && state.userProfile.bio.length > 149 ? (
+                  <p>{state.userProfile.bio.slice(0, 149)}...</p>
                 ) : (
                   state.userProfile.bio || "No bio available"
                 )}
