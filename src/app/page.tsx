@@ -4,8 +4,16 @@ import Grid from "@/components/landing/Grid";
 import Header from "@/components/landing/Header";
 import Nav from "@/components/landing/Nav";
 import "@/styles/globals.css";
+import { createClient } from "@/utils/server";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.getUser();
+  if ((!error && data?.user) || data?.user) {
+    redirect("/dashboard");
+  }
   return (
     <main className="flex justify-center items-center w-full h-full">
       <div className="max-w-[1200px] w-full h-full flex flex-col items-center justify-center relative z-10">
