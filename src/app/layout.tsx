@@ -12,6 +12,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Git.cow",
   description: "Github Analytics",
+  icons: {
+    icon: "/gitcow.svg",
+  },
 };
 
 export default function RootLayout({
