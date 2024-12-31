@@ -17,7 +17,10 @@ function Footer() {
         </div>
       </div>
       <div>
-        <a href="#" className="text-gray-600 hover:text-gray-800">
+        <a
+          href="https://x.com/works_lumi"
+          className="text-gray-600 hover:text-gray-800"
+        >
           <FaTwitter
             size={24}
             className="p-1 rounded-full border border-gray-200 hover:bg-gray-100"
